@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.entreprise.controllers.DashboardController"
+            style="-fx-background-color: #f8f9fa;">
+
+    <!-- En-tête -->
+    <top>
+        <VBox style="-fx-background-color: #2c3e50; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 3);">
+            <HBox style="-fx-padding: 20; -fx-spacing: 20;">
+                <Label text="📊" style="-fx-font-size: 28px;"/>
+                <VBox>
+                    <Label text="ANALYSE DES RELATIONS INTER-ENTREPRISES"
+                           style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 24px;"/>
+                    <Label text="Tableau de bord d'analyse et de visualisation"
+                           style="-fx-text-fill: #bdc3c7; -fx-font-size: 14px;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Navigation - SUPPRIMÉ BOUTON RAPPORTS -->
+            <HBox style="-fx-padding: 0 20 20 20; -fx-spacing: 15;">
+                <Button text="📊 DASHBOARD"
+                        onAction="#goToDashboard"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10 25;"/>
+
+                <Button text="🏢 ENTREPRISES"
+                        onAction="#goToEntrepriseView"
+                        style="-fx-background-color: #2c3e50; -fx-text-fill: white; -fx-border-color: #3498db; -fx-border-width: 2; -fx-font-size: 14px; -fx-padding: 10 25;"/>
+
+                <Button text="🔗 RELATIONS"
+                        onAction="#goToRelationView"
+                        style="-fx-background-color: #2c3e50; -fx-text-fill: white; -fx-border-color: #2ecc71; -fx-border-width: 2; -fx-font-size: 14px; -fx-padding: 10 25;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Contenu principal -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-padding: 20;">
+            <VBox spacing="25" style="-fx-padding: 10;">
+
+                <!-- Statistiques principales -->
+                <GridPane hgap="20" vgap="20">
+                    <!-- Carte 1 -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(52,152,219,0.2), 15, 0, 0, 5);"
+                          GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <HBox spacing="15">
+                            <Label text="🏢" style="-fx-font-size: 40px;"/>
+                            <VBox>
+                                <Label fx:id="lblTotalEntreprises" text="0"
+                                       style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+                                <Label text="ENTREPRISES" style="-fx-text-fill: #7f8c8d; -fx-font-weight: bold;"/>
+                            </VBox>
+                        </HBox>
+                        <Label text="Total des entreprises enregistrees"
+                               style="-fx-text-fill: #95a5a6; -fx-font-size: 12px; -fx-padding: 10 0 0 0;"/>
+                    </VBox>
+
+                    <!-- Carte 2 -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(46,204,113,0.2), 15, 0, 0, 5);"
+                          GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <HBox spacing="15">
+                            <Label text="🔗" style="-fx-font-size: 40px;"/>
+                            <VBox>
+                                <Label fx:id="lblTotalRelations" text="0"
+                                       style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #2ecc71;"/>
+                                <Label text="RELATIONS" style="-fx-text-fill: #7f8c8d; -fx-font-weight: bold;"/>
+                            </VBox>
+                        </HBox>
+                        <Label text="Total des relations commerciales"
+                               style="-fx-text-fill: #95a5a6; -fx-font-size: 12px; -fx-padding: 10 0 0 0;"/>
+                    </VBox>
+
+                    <!-- Carte 3 -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(155,89,182,0.2), 15, 0, 0, 5);"
+                          GridPane.columnIndex="2" GridPane.rowIndex="0">
+                        <HBox spacing="15">
+                            <Label text="📈" style="-fx-font-size: 40px;"/>
+                            <VBox>
+                                <Label fx:id="lblRelationsActives" text="0"
+                                       style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #9b59b6;"/>
+                                <Label text="ACTIVES" style="-fx-text-fill: #7f8c8d; -fx-font-weight: bold;"/>
+                            </VBox>
+                        </HBox>
+                        <Label text="Relations en cours actuellement"
+                               style="-fx-text-fill: #95a5a6; -fx-font-size: 12px; -fx-padding: 10 0 0 0;"/>
+                    </VBox>
+
+                    <!-- Carte 4 -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(231,76,60,0.2), 15, 0, 0, 5);"
+                          GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <HBox spacing="15">
+                            <Label text="🏭" style="-fx-font-size: 40px;"/>
+                            <VBox>
+                                <Label fx:id="lblSecteurs" text="0"
+                                       style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;"/>
+                                <Label text="SECTEURS" style="-fx-text-fill: #7f8c8d; -fx-font-weight: bold;"/>
+                            </VBox>
+                        </HBox>
+                        <Label text="Secteurs d'activite representes"
+                               style="-fx-text-fill: #95a5a6; -fx-font-size: 12px; -fx-padding: 10 0 0 0;"/>
+                    </VBox>
+
+                    <!-- Carte 5 -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(39,174,96,0.2), 15, 0, 0, 5);"
+                          GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <HBox spacing="15">
+                            <Label text="🤝" style="-fx-font-size: 40px;"/>
+                            <VBox>
+                                <Label fx:id="lblPartenariats" text="0"
+                                       style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                                <Label text="PARTENARIATS" style="-fx-text-fill: #7f8c8d; -fx-font-weight: bold;"/>
+                            </VBox>
+                        </HBox>
+                        <Label text="Accords de partenariat"
+                               style="-fx-text-fill: #95a5a6; -fx-font-size: 12px; -fx-padding: 10 0 0 0;"/>
+                    </VBox>
+
+                    <!-- Carte 6 -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(243,156,18,0.2), 15, 0, 0, 5);"
+                          GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <HBox spacing="15">
+                            <Label text="👥" style="-fx-font-size: 40px;"/>
+                            <VBox>
+                                <Label fx:id="lblCollaborations" text="0"
+                                       style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #f39c12;"/>
+                                <Label text="COLLABORATIONS" style="-fx-text-fill: #7f8c8d; -fx-font-weight: bold;"/>
+                            </VBox>
+                        </HBox>
+                        <Label text="Projets de collaboration"
+                               style="-fx-text-fill: #95a5a6; -fx-font-size: 12px; -fx-padding: 10 0 0 0;"/>
+                    </VBox>
+                </GridPane>
+
+                <!-- Tableau des relations recentes -->
+                <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0, 0, 5);">
+                    <HBox spacing="10">
+                        <Label text="🕐 RELATIONS RECENTES"
+                               style="-fx-font-weight: bold; -fx-font-size: 18px;"/>
+                        <Label fx:id="lblRecentCount" text="(0 relations)"
+                               style="-fx-text-fill: #7f8c8d;"/>
+                        <Button text="🔄 Actualiser"
+                                onAction="#refreshData"
+                                style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 5 15;"/>
+                    </HBox>
+
+                    <TableView fx:id="tableViewRecent"
+                               style="-fx-background-color: white; -fx-pref-height: 300; -fx-margin: 15 0;">
+                        <columns>
+                            <TableColumn text="Date" prefWidth="100"/>
+                            <TableColumn text="Entreprise Source" prefWidth="200"/>
+                            <TableColumn text="Entreprise Cible" prefWidth="200"/>
+                            <TableColumn text="Type" prefWidth="120"/>
+                            <TableColumn text="Statut" prefWidth="100"/>
+                            <TableColumn text="Actions" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!-- Analyse par secteur -->
+                <HBox spacing="20">
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0, 0, 5);">
+                        <Label text="🏭 REPARTITION PAR SECTEUR"
+                               style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-padding: 0 0 15 0;"/>
+
+                        <VBox fx:id="vboxSecteurs" spacing="10"/>
+                    </VBox>
+
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0, 0, 5);">
+                        <Label text="📊 STATISTIQUES DETAILLEES"
+                               style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-padding: 0 0 15 0;"/>
+
+                        <VBox fx:id="vboxStats" spacing="15">
+                            <!-- Les statistiques seront ajoutees dynamiquement -->
+                        </VBox>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <!-- Pied de page - SUPPRIMÉ BOUTON EXPORTER RAPPORT -->
+    <bottom>
+        <HBox style="-fx-background-color: #2c3e50; -fx-padding: 15; -fx-spacing: 30;">
+            <Label text="📊 Systeme d'Analyse des Relations Inter-Entreprises v1.0"
+                   style="-fx-text-fill: #bdc3c7;"/>
+            <Label text="© 2024 - Developpe avec JavaFX 17 et SQL Server"
+                   style="-fx-text-fill: #95a5a6;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

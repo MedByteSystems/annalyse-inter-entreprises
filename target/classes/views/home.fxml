@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.entreprise.controllers.HomeController"
+      spacing="30"
+      alignment="CENTER"
+      style="-fx-background-color: linear-gradient(to bottom, #2c3e50, #4a6491);">
+
+    <StackPane VBox.vgrow="ALWAYS">
+        <VBox spacing="40" alignment="CENTER">
+            <!-- Titre -->
+            <Label text="Gestion des Relations Inter-Entreprises"
+                   textFill="white"
+                   style="-fx-font-weight: bold;">
+                <font>
+                    <Font size="32.0" />
+                </font>
+            </Label>
+
+            <!-- Description -->
+            <Label text="Visualisez et analysez les partenariats, collaborations et acquisitions entre entreprises"
+                   textFill="#ecf0f1"
+                   wrapText="true"
+                   maxWidth="600"
+                   textAlignment="CENTER">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Label>
+
+            <!-- Boutons de navigation -->
+            <VBox spacing="20" alignment="CENTER">
+                <Button text="📊 Gestion des Entreprises"
+                        fx:id="btnEntreprises"
+                        onAction="#goToEntrepriseView"
+                        style="-fx-font-size: 16px; -fx-padding: 15 30; -fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5;"
+                        prefWidth="300">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+
+                <Button text="🔗 Gestion des Relations"
+                        fx:id="btnRelations"
+                        onAction="#goToRelationView"
+                        style="-fx-font-size: 16px; -fx-padding: 15 30; -fx-background-color: #2ecc71; -fx-text-fill: white; -fx-background-radius: 5;"
+                        prefWidth="300">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+
+                <Button text="📈 Analyse des Relations"
+                        fx:id="btnAnalyse"
+                        onAction="#goToAnalyseView"
+                        style="-fx-font-size: 16px; -fx-padding: 15 30; -fx-background-color: #9b59b6; -fx-text-fill: white; -fx-background-radius: 5;"
+                        prefWidth="300">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+
+                <Button text="❌ Quitter"
+                        onAction="#quitApplication"
+                        style="-fx-font-size: 14px; -fx-padding: 10 20; -fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 5;"
+                        prefWidth="200">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                </Button>
+            </VBox>
+
+            <!-- Statistiques rapides -->
+            <VBox spacing="10" alignment="CENTER"
+                  style="-fx-background-color: rgba(255,255,255,0.1); -fx-background-radius: 10; -fx-padding: 20;">
+                <Label text="📊 Statistiques Globales"
+                       textFill="#ecf0f1"
+                       style="-fx-font-weight: bold;">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <HBox spacing="30" alignment="CENTER">
+                    <VBox spacing="5" alignment="CENTER">
+                        <Label fx:id="lblTotalEntreprises" text="0"
+                               textFill="#3498db"
+                               style="-fx-font-weight: bold;">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <Label text="Entreprises" textFill="#bdc3c7"/>
+                    </VBox>
+                    <VBox spacing="5" alignment="CENTER">
+                        <Label fx:id="lblTotalRelations" text="0"
+                               textFill="#2ecc71"
+                               style="-fx-font-weight: bold;">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <Label text="Relations" textFill="#bdc3c7"/>
+                    </VBox>
+                    <VBox spacing="5" alignment="CENTER">
+                        <Label fx:id="lblRelationsActives" text="0"
+                               textFill="#9b59b6"
+                               style="-fx-font-weight: bold;">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <Label text="Relations Actives" textFill="#bdc3c7"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </VBox>
+    </StackPane>
+
+    <!-- Pied de page -->
+    <VBox spacing="5" alignment="CENTER"
+          style="-fx-background-color: rgba(0,0,0,0.2); -fx-padding: 10;">
+        <Label text="Projet JavaFX Avancé - Analyse des Relations Inter-Entreprises"
+               textFill="#95a5a6"/>
+        <Label text="© 2024 - Développé avec JavaFX 17"
+               textFill="#7f8c8d"/>
+    </VBox>
+
+    <padding>
+        <Insets top="40" right="40" bottom="20" left="40"/>
+    </padding>
+</VBox>

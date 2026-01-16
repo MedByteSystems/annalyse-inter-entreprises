@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.entreprise.controllers.RelationController"
+            style="-fx-background-color: #f5f5f5;">
+
+    <!-- En-tête -->
+    <top>
+        <VBox spacing="10" style="-fx-background-color: #2c3e50; -fx-padding: 15;">
+            <HBox spacing="20">
+                <Button text="◀ Dashboard"
+                        onAction="#goToHome"
+                        style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-background-radius: 3;"/>
+                <Label text="🔗 Gestion des Relations"
+                       textFill="white"
+                       style="-fx-font-weight: bold;">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+            </HBox>
+
+            <!-- Filtres -->
+            <HBox spacing="10">
+                <ComboBox fx:id="cbTypeRelation"
+                          promptText="Tous les types"
+                          style="-fx-pref-width: 200;"
+                          onAction="#onFilterType"/>
+
+                <ComboBox fx:id="cbEntrepriseSource"
+                          promptText="Entreprise source"
+                          style="-fx-pref-width: 250;"
+                          onAction="#onFilterEntreprise"/>
+
+                <ComboBox fx:id="cbEntrepriseCible"
+                          promptText="Entreprise cible"
+                          style="-fx-pref-width: 250;"
+                          onAction="#onFilterEntreprise"/>
+
+                <Button text="🔄 Réinitialiser"
+                        onAction="#resetFilters"
+                        style="-fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Centre : Tableau des relations -->
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <HBox spacing="10">
+                <Label text="Liste des relations inter-entreprises"
+                       style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+                <Label fx:id="lblCount" text="(0 relations)"/>
+            </HBox>
+
+            <TableView fx:id="tableView"
+                       style="-fx-background-color: white; -fx-border-color: #ddd; -fx-border-radius: 5;">
+                <columns>
+                    <TableColumn text="ID" fx:id="colId" prefWidth="50"/>
+                    <TableColumn text="Entreprise Source" fx:id="colSource" prefWidth="200"/>
+                    <TableColumn text="Entreprise Cible" fx:id="colCible" prefWidth="200"/>
+                    <TableColumn text="Type" fx:id="colType" prefWidth="120"/>
+                    <TableColumn text="Date Début" fx:id="colDateDebut" prefWidth="100"/>
+                    <TableColumn text="Date Fin" fx:id="colDateFin" prefWidth="100"/>
+                    <TableColumn text="Description" fx:id="colDescription" prefWidth="250"/>
+                    <TableColumn text="Actions" fx:id="colActions" prefWidth="150"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <!-- Bas : Boutons d'action et statistiques -->
+    <bottom>
+        <VBox spacing="10" style="-fx-padding: 15; -fx-background-color: #ecf0f1;">
+            <!-- Statistiques rapides -->
+            <HBox spacing="30">
+                <VBox>
+                    <Label fx:id="lblTotalRelations" text="0"
+                           style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #2980b9;"/>
+                    <Label text="Total Relations"/>
+                </VBox>
+                <VBox>
+                    <Label fx:id="lblPartenariats" text="0"
+                           style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #27ae60;"/>
+                    <Label text="Partenariats"/>
+                </VBox>
+                <VBox>
+                    <Label fx:id="lblCollaborations" text="0"
+                           style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #f39c12;"/>
+                    <Label text="Collaborations"/>
+                </VBox>
+                <VBox>
+                    <Label fx:id="lblAcquisitions" text="0"
+                           style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #e74c3c;"/>
+                    <Label text="Acquisitions"/>
+                </VBox>
+            </HBox>
+
+            <!-- Boutons d'action - SUPPRIMÉ VISUALISER LE RÉSEAU ET ANALYSE DÉTAILLÉE -->
+            <HBox spacing="20">
+                <Button text="➕ Ajouter une relation"
+                        onAction="#showAddDialog"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-padding: 10 20;"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

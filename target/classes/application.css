@@ -1,0 +1,100 @@
+/* Styles pour les graphiques */
+.chart {
+    -fx-background-color: transparent;
+    -fx-legend-visible: true;
+    -fx-legend-side: bottom;
+}
+
+.chart-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+    -fx-padding: 10px;
+}
+
+.chart-legend-item {
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 12px;
+}
+
+.chart-legend-item-symbol {
+    -fx-background-radius: 3px;
+}
+
+/* PieChart */
+.pie-chart {
+    -fx-label-line-length: 10px;
+    -fx-start-angle: 90;
+}
+
+.chart-pie-label {
+    -fx-fill: #2c3e50;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.chart-pie-label-line {
+    -fx-stroke: #95a5a6;
+    -fx-fill: #95a5a6;
+}
+
+/* BarChart et LineChart */
+.chart-series-line {
+    -fx-stroke-width: 2px;
+    -fx-effect: null;
+}
+
+.chart-line-symbol {
+    -fx-background-color: white, #3498db;
+    -fx-background-insets: 0, 2;
+    -fx-background-radius: 4px;
+    -fx-padding: 4px;
+}
+
+.default-color0.chart-series-line { -fx-stroke: #3498db; }
+.default-color0.chart-line-symbol { -fx-background-color: #3498db, white; }
+
+.default-color1.chart-series-line { -fx-stroke: #2ecc71; }
+.default-color1.chart-line-symbol { -fx-background-color: #2ecc71, white; }
+
+.default-color2.chart-series-line { -fx-stroke: #e74c3c; }
+.default-color2.chart-line-symbol { -fx-background-color: #e74c3c, white; }
+
+/* BarChart spécifique */
+.chart-bar {
+    -fx-bar-fill: #3498db;
+    -fx-background-color: #3498db;
+    -fx-border-color: #2980b9;
+    -fx-border-width: 1px;
+}
+
+.chart-bar:hover {
+    -fx-opacity: 0.8;
+}
+
+/* Axes */
+.axis {
+    -fx-tick-label-fill: #7f8c8d;
+    -fx-tick-length: 5px;
+    -fx-minor-tick-length: 3px;
+    -fx-border-color: transparent;
+}
+
+.axis-label {
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
+}
+
+.axis-tick-mark {
+    -fx-stroke: #bdc3c7;
+    -fx-stroke-width: 1px;
+}
+
+.axis-minor-tick-mark {
+    -fx-stroke: #ecf0f1;
+    -fx-stroke-width: 1px;
+}
